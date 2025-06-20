@@ -140,3 +140,32 @@ func (c *Context) celiFunc(name *token, expr *Expr) *Expr   { return c.mathFunc(
 func (c *Context) movoFunc(name *token, expr *Expr) *Expr   { return c.mathFunc(expr, movo) }
 func (c *Context) celiDaFunc(name *token, expr *Expr) *Expr { return c.mathFunc(expr, celida) }
 func (c *Context) movoDaFunc(name *token, expr *Expr) *Expr { return c.mathFunc(expr, movoda) }
+
+// deep equality for all Expr types
+func equalExpr(a, b *Expr) bool {
+	if a == nil && b == nil {
+		return true
+	}
+	if a == nil || b == nil {
+		return false
+	}
+	if a.sada != nil && b.sada != nil {
+		// compare tokenType and value
+		if a.sada.typ != b.sada.typ {
+			return false
+		}
+		if a.sada.typ == 4 { // tokenTypeNumber
+			return a.sada.num == b.sada.num
+		}
+		return a.sada.text == b.sada.text
+	}
+	if a.sada != nil || b.sada != nil {
+		return false
+	}
+	// both are cons cells
+	return equalExpr(a.lawa, b.lawa) && equalExpr(a.kucha, b.kucha)
+}
+
+func (c *Context) shatoFunc(name *token, expr *Expr) *Expr {
+	return truthExpr(equalExpr(Lawa(expr), Lawa(Kucha(expr))))
+}
