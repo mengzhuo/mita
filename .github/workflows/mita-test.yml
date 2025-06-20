@@ -1,0 +1,21 @@
+name: MITA LISP Library Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-mita-lisp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.21
+      - name: Build MITA
+        run: go build -o mita ./cmd/mita/main.go
+      - name: Run odomu.mita LISP tests
+        run: ./mita odomu.mita examples/odomu_test.mita 

@@ -1,0 +1,59 @@
+; cadr
+(cadr '(1 2 3)) ; => 2
+
+; caddr
+(caddr '(1 2 3)) ; => 3
+
+; cddr
+(cddr '(1 2 3)) ; => (3)
+
+; list
+(list 1 2 3) ; => (1 2 3)
+
+; length
+(length '(1 2 3)) ; => 3
+
+; map
+(map (mita (x) (celi x x)) '(1 2 3)) ; => (1 4 9)
+
+; filter
+(filter (mita (x) (aba x du)) '(1 2 3)) ; => (1)
+
+; reduce
+(reduce (mita (a b) (celi a b)) 0 '(1 2 3)) ; => 6
+
+; append
+(append '(1 2) '(3 4)) ; => (1 2 3 4)
+
+; reverse
+(reverse '(1 2 3)) ; => (3 2 1)
+
+; assoc
+(assoc 'b '((a 1) (b 2) (c 3))) ; => (b 2)
+
+; member
+(member 'a '(b a c)) ; => da
+
+; last
+(last '(1 2 3)) ; => 3
+
+; nth
+(nth 1 '(a b c)) ; => b
+
+; and
+(and da da nye) ; => nye
+
+; or
+(or nye da nye) ; => da
+
+; not
+(not da) ; => nye
+
+; equal
+(equal unu unu) ; => da
+
+; remove
+(remove 'a '(a b a c)) ; => (b c)
+
+; flatten
+(flatten '((1 2) (3 (4 5)))) ; => (1 2 3 4 5) 
