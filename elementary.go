@@ -112,7 +112,6 @@ func aba(a, b int) bool       { return a < b }
 func unta(a, b int) bool      { return a > b }
 func abaShato(a, b int) bool  { return a <= b }
 func untaShato(a, b int) bool { return a >= b }
-func shato(a, b int) bool     { return a == b }
 func nyeShato(a, b int) bool  { return a != b }
 
 func (c *Context) boolFunc(expr *Expr, fn func(a, b int) bool) *Expr {
@@ -123,7 +122,6 @@ func (c *Context) abaFunc(name *token, expr *Expr) *Expr       { return c.boolFu
 func (c *Context) untaFunc(name *token, expr *Expr) *Expr      { return c.boolFunc(expr, unta) }
 func (c *Context) abaShatoFunc(name *token, expr *Expr) *Expr  { return c.boolFunc(expr, abaShato) }
 func (c *Context) untaShatoFunc(name *token, expr *Expr) *Expr { return c.boolFunc(expr, untaShato) }
-func (c *Context) shatoFunc(name *token, expr *Expr) *Expr     { return c.boolFunc(expr, shato) }
 func (c *Context) nyeShatoFunc(name *token, expr *Expr) *Expr  { return c.boolFunc(expr, nyeShato) }
 
 func celi(a, b int) int   { return a + b }
